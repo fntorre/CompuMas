@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="quiero-pagar">
+        Quiero pagar en:
+        <select id="selectorcuota" name="select">
+            <option id="cseis" value="c6" monto="320.166">06 Cuotas</option>
+            <option id="cdoce" value="c12" monto="245.083">12 Cuotas</option>
+            <option id="cquince" value="c15" monto="198.333">15 Cuotas</option>
+            <option id="cdocho" value="c18" monto="180.388">18 Cuotas</option>
+        </select>
+    </div>
+
+    <script>
+        $(function () {
+            $('#selectorcuota').change(function () {
+                localStorage.setItem('select', this.value);
+            });
+            if (localStorage.getItem('selec')) {
+                $('#selectorcuota').val(localStorage.getItem('selec'));
+            }
+        });
+    </script>
+</body>
+
+</html>

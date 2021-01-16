@@ -1,0 +1,460 @@
+<!-- 
+ *
+ * Desenvolvido por Integrando.se
+ * hello@integrando.se
+ * 
+ * Bootstrap v.3
+ *
+ -->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" lang="en-us">
+
+<head>
+    <title> Compumarket</title>
+    <vtex:metaTags />
+    <vtex:template id="commonStyles" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .user-review h4 {
+            font-size: 0 !important;
+        }
+
+        .user-review h4:before {
+            content: "Calificacion de producto";
+            font-size: 18px !important
+        }
+
+        .close a {
+            font-size: 0 !important;
+        }
+
+        .close a:before {
+            content: "Cerrar";
+            font-size: 17px !important;
+        }
+
+        .infoCompuMas {
+            text-align: center;
+            margin-top: 30px;
+            display: block;
+            line-height: 1.35;
+        }
+
+        @media(max-width:1000px) {
+            #publishUserReview #formUserReview {
+                width: 100% !important;
+                left: 0 !important;
+                margin-left: 0 !important;
+            }
+        }
+    </style>
+
+    <link href="/files/compumas.css" rel="stylesheet" />
+
+</head>
+
+<body id="product-page">
+
+    <div class="page">
+
+        <!--  SubTemplate: Header -->
+        <vtex:template id="Header" />
+        <!-- /SubTemplate: Header -->
+
+        <div id="product-extra-top"></div>
+
+        <section id="product-content" class="container">
+
+            <div id="box-bread-brumb" class="hidden-xs">
+                <vtex.cmc:breadCrumb />
+            </div>
+
+            <div id="product-extra-middle"></div>
+
+            <div class="row product-details">
+
+                <div class="product-name-mobile col-xs-12 visible-xs">
+                    <div class="product-name">
+                        <div id="brand">
+                            <vtex.cmc:brandName />
+                        </div>
+                        <vtex.cmc:productName />
+                    </div>
+                    <div class="row">
+                        <div class="codigo-produto col-xs-12">
+                            <span>Cód:</span>
+                            <vtex.cmc:skuReference />
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="avaliacoes"><a href="#reviews" class="link-ancora">
+                                    <vtex.cmc:evaluationRate />
+                                </a></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-image col-xs-12 col-sm-7 col-lg-6 text-center">
+                    <!--  Component: Product Images -->
+                    <vtex.cmc:ProductImage zoom="on" />
+
+                    <!--vtex.cmc:facebookLike /-->
+
+
+                </div><!-- .product-image -->
+
+                <div class="product-info col-xs-12 col-sm-5 col-lg-6">
+
+                    <div class="product-name hidden-xs">
+                        <div id="brand">
+                            <vtex.cmc:brandName />
+                        </div>
+                        <h1>
+                            <vtex.cmc:productName />
+                        </h1>
+                    </div>
+
+                    <div class="row hidden-xs">
+                        <div class="codigo-produto col-xs-12 col-lg-6">
+                            <span>Cód:</span>
+                            <vtex.cmc:skuReference />
+                        </div>
+                        <div class="col-xs-12 col-lg-6">
+                            <!--div class="avaliacoes"><a href="#reviews" class="link-ancora"><vtex.cmc:evaluationRate/></a></div-->
+                        </div>
+                    </div>
+
+                    <div class="price-box">
+                        <!--  Component: Sellers -->
+                        <vtex.cmc:SellerOptions />
+
+                        <!--  Component: Price -->
+                        <vtex.cmc:skuPrice />
+
+                        <!--  Component: Sales channels -->
+                        <vtex.cmc:SalesChannelDropList />
+
+                        <!--  Component: Addicional services -->
+                        <vtex.cmc:stockKeepingUnitService />
+
+                        <!--  Component: Payment methods -->
+                        <!-- <vtex.cmc:OtherPaymentMethod/> -->
+                    </div><!-- .price-box -->
+
+                    <!--div class="seletor-sku">
+                         <vtex.cmc:stockKeepingUnitSelection />
+                     </div -->
+
+                    <div class="buy-button-box hidden-xs">
+                        <vtex.cmc:BuyButton />
+                    </div><!-- .buy-button-box -->
+                    <!-- 
+                     <div class="col-compumas">
+                         <button class="btn-abrir-compumas" onclick="abrirModal()">Comprar a cuotas</button>
+                     </div>-->
+
+                    <div style="display: none;">
+                        <vtex.cmc:OtherPaymentMethod />
+                    </div>
+
+                    <div id="product-extra-details-1"></div>
+
+                    <!--div class="shipping-box">pa
+                         <vtex.cmc:shippingValue />
+                         <script type="text/javascript">
+                             $(document).ready( function(){
+                                 ShippingValue();
+                             });
+                         </script>
+                     </div-->
+
+                    <div id="product-extra-details-2"></div>
+
+                </div><!-- .product-info -->
+
+            </div><!-- .product-details -->
+
+            <div id="product-extra-details-3"></div>
+
+            <div class="junto">
+                <h4 id="junto-tit" style="display: none;">APROVECHÁ ESTA PROMO COMPRANDO JUNTO</h4>
+                <button id="cambiar" style="display: none;">Otros Productos</button>
+                <vtex.cmc:BuyTogether />
+            </div>
+
+            <div class="product-description">
+
+                <div class="btn-group hidden-xs" role="group" aria-label="menu-anchor">
+                    <a href="#description" class="btn btn-default">Descripción</a>
+                    <a href="#specification" class="btn btn-default">Especificaciones</a>
+                    <a href="#reviews" class="btn btn-default">Calificaciones</a>
+                </div>
+
+
+                <div id="product-extra-description-1"></div>
+
+                <div class="product-description-box">
+                    <!--  Component: Cross selling -->
+                    <!--<vtex.cmc:BuyTogether/>-->
+                </div>
+
+                <div id="product-extra-description-2"></div>
+
+                <div class="product-description-box">
+                    <div id="description">
+                        <h2 class="title">Descripción</h2>
+                        <!--  Component: Description -->
+                        <vtex.cmc:ProductDescription />
+                    </div><!-- .description -->
+                </div>
+
+                <div id="product-extra-description-3"></div>
+
+                <div class="product-description-box">
+                    <div id="specification">
+                        <!--  Component: Specification -->
+                        <vtex.cmc:productSpecification />
+                    </div><!-- .description -->
+                </div>
+
+                <div id="product-extra-description-4"></div>
+
+                <div class="product-description-box">
+                    <div id="reviews" class="rating">
+                        <vtex.cmc:UserReview />
+                    </div>
+                </div>
+
+                <div id="product-extra-description-5"></div>
+
+                <div class="product-description-box">
+                    <div class="showcase-default showcase-owl">
+                        <vtex:contentPlaceHolder id="Quem-viu-viu-tambem" />
+                    </div><!-- .showcase-default -->
+                </div>
+
+                <div id="product-extra-description-6"></div>
+
+                <div class="product-description-box">
+                    <div class="showcase-default showcase-owl">
+                        <vtex:contentPlaceHolder id="Quem-viu-tambem-comprou" />
+                    </div><!-- .showcase-default -->
+                </div>
+
+                <div id="product-extra-description-7"></div>
+
+                <div class="product-description-box">
+                    <div class="showcase-default showcase-owl">
+                        <vtex:contentPlaceHolder id="Quem-comprou-tambem-comprou" />
+                    </div><!-- .showcase-default -->
+                </div>
+            </div><!-- .product-description -->
+
+        </section>
+
+        <div id="product-extra-bottom"></div>
+
+        <!--  SubTemplate: Footer -->
+        <vtex:template id="Footer" />
+        <!-- /SubTemplate: Footer -->
+
+        <div id="comprar-flutuante" style="display: none;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-1 visible-lg visible-md">
+                        <img src="/arquivos/sem-foto.gif" alt="" id="foto-comprar-flutuante" class="img-responsive" />
+                    </div>
+                    <div class="col-nome col-xs-3 hidden-xs">
+                        <vtex.cmc:productName />
+                    </div>
+                    <div class="col-precos col-xs-4 col-lg-5 hidden-xs">
+                        <vtex.cmc:skuPrice />
+                    </div>
+                    <div class="col-comprar col-xs-12 col-sm-5 col-md-4 col-lg-3">
+                        <div class="buy-button-box">
+                            <vtex.cmc:BuyButton />
+                        </div><!-- .buy-button-box -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- .container-fluid -->
+
+    <!--MODAL COMPUMAS-->
+
+    <div class="modalContainer" id="compumasModal">
+        <div class="modal-dialog login animated">
+            <div class="modal-content">
+                <div class="modal-linea">
+                    <div class="modal-header">
+                        <button type="button" class="close close-modal"><i class="fa fa-times"></i></button>
+                        <h4 class="modal-title">Calculadora financiera</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="box">
+                            <div class="content preguntaBox">
+                                <div class="quiero-pagar">
+                                    Quiero pagar en:
+                                    <select id="selectorcuota" name="select">
+                                        <option id="cseis" value="c6">06 Cuotas</option>
+                                        <option id="cdoce" value="c12">12 Cuotas</option>
+                                        <option id="cquince" value="c15">15 Cuotas</option>
+                                        <option id="cdocho" value="c18">18 Cuotas</option>
+                                    </select>
+                                </div>
+                                <div class="valor"><span>Valor de la cuota:</span></div>
+                                <div class="guarani"><b>GS. </b><b id="val-imp">000.000</b></div>
+                                <div class="preguntas">
+                                    <a class="btn btn-default" href="javascript: showLoginForm();">
+                                        Soy cliente compumás
+                                    </a>
+                                    <a class="btn btn-default" href="javascript: showRegisterForm();">
+                                        Hacete cliente compumás
+                                    </a>
+                                </div>
+                                <div class="infoCompuMas">
+                                    <p>Su compra con crédito CompuMAS sera procesada por el departamento
+                                        Financiero. Posteriormente nos podremos en contacto a la brevedad.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="content loginBox" style="display: none;">
+                                <div class="error"></div>
+                                <form class="form" id="soycompumas">
+                                    <span class="soy">Soy cliente Compumás</span>
+                                    <div class="entrada">
+                                        <label for="numci">CI N°: </label>
+                                        <input type="text" id="numci" name="numci" class="inputentrada input-number"
+                                            required="true" />
+                                    </div>
+                                    <div class="entrada">
+                                        <label for="numtel">N° <i class="fa fa-whatsapp"></i>: </label>
+                                        <input type="text" id="numtel" name="numtel" class="inputentrada input-number"
+                                            required="true" />
+                                    </div>
+                                    <button id="ir-compumas" type="submit" class="btn btn-default btn-login">Enviar y
+                                        finalizar compra con CompuMAS</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="box">
+                            <div class="content registerBox" style="display:none;">
+                                <div class="parrafo-new-modal">
+                                    <p>El Club de Beneficios de Compumarket y empezá a disfrutar de:</p>
+                                    <div class="logos-for-new-modal">
+                                        <img src="/arquivos/logo-modal-1.png" class="logo-modal" />
+                                        <img src="/arquivos/logo-modal-2.png" class="logo-modal" />
+                                        <img src="/arquivos/logo-modal-3.png" class="logo-modal" />
+                                    </div>
+                                    <p>¡Con Compumas llevá mucho más de lo que compras!</p>
+                                </div>
+                                <div class="form">
+                                    <form action="save.php" method="post" id="form_id" enctype="multipart/form-data">
+                                        <div style="display: none;">
+                                            <div>
+                                                <canvas id="canvas-area-1" width="300" height="100"></canvas>
+                                                <textarea name="textarea-1" id="textarea-1"></textarea>
+                                                <img src="" id="preview-pict-1" />
+                                            </div>
+                                            <!--
+                                             <div>
+                                                 <canvas id="canvas-area-2" width="300" height="100"></canvas>
+                                                 <textarea name="textarea-2" id="textarea-2"></textarea>
+                                                 <img src="" id="preview-pict-2"/>
+                                             </div>
+     
+                                             <div>
+                                                 <canvas id="canvas-area-3" width="300" height="100"></canvas>
+                                                 <textarea name="textarea-3" id="textarea-3"></textarea>
+                                                 <img src="" id="preview-pict-3"/>
+                                             </div>-->
+                                        </div>
+
+                                        <div class="modal-cont-1">
+
+                                            <div class="campo">
+                                                <label for="nombre">Nombre</label>
+                                                <input id="nombre" class="form-control" type="text" required="true" />
+                                            </div>
+                                            <div class="campo">
+                                                <label for="apellido">Apellido</label>
+                                                <input id="apellido" class="form-control" type="text" name="apellido"
+                                                    required="true" />
+                                            </div>
+
+
+                                            <div class="campo">
+                                                <label for="correo">E-mail</label>
+                                                <input id="correo" class="form-control" type="text" name="correo"
+                                                    required="true" />
+                                            </div>
+                                            <div class="campo">
+                                                <label for="telefono">Telefono</label>
+                                                <input id="telefono" class="form-control" type="text" name="telefono"
+                                                    required="true" />
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="btn-upload-1">Adjuntar Cedula de identidad</label>
+                                            <input type="file" name="archivo-1" id="btn-upload-1" class="input-file"
+                                                accept="application/pdf, image/jpeg, image/png" />
+
+                                        </div>
+                                        <!--<div class="form-group">
+                                             <label for="btn-upload-2">Ultimo IVA o Certificado
+                                                 laboral</label>
+                                             <input type="file" name="archivo-2" id="btn-upload-2" class="input-file"
+                                                 accept="application/pdf, image/jpeg, image/png" required="true" />
+                                         </div>
+                                         <div class="form-group">
+                                             <label for="btn-upload-3">Factura de ANDE o ESSAO o
+                                                 COPACO</label>
+                                             <input type="file" name="archivo-3" id="btn-upload-3" class="input-file"
+                                                 accept="application/pdf, image/jpeg, image/png" required="true" />
+                                         </div>-->
+                                        <input type="hidden" id="salida" name="salida" value="" />
+                                        <button type="submit" class="enviar-ahora"><i class="icon-location-arrow"></i>
+                                            Enviar y finalizar compra con CompuMAS</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-pregunta">
+                            <span>Compumas</span>
+                        </div>
+                        <div class="forgot login-footer" style="display: none;">
+                            <span>Todavia no estas registrado?
+                                <a href="javascript: showRegisterForm();"> Crear una cuenta Compumas</a>
+                            </span>
+                        </div>
+                        <div class="forgot register-footer" style="display:none">
+                            <span>Ya tenes una cuenta?</span>
+                            <a href="javascript: showLoginForm();"> Pagar ahora con Compumas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--FIN MODAL COMPUMAS-->
+
+</body>
+<script src="/files/preparaPreciosProducto.js"></script>
+<vtex:template id="commonScripts" />
+<script src="/files/compumas.js"></script>
+
+<!-- GUARDA EN LOCALSTORAGE EL NUMERO DE CUOTAS -->
+<script>
+     $('#selectorcuota').change(function () {
+        localStorage.setItem('select', this.value);
+    });
+</script>
+
+</html>
