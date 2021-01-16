@@ -59,12 +59,15 @@ $(window).on("load", function () {
 
         });
 
-        // con esto reemplazamos todo el texto y agregamos los legales
-        let stone = localStorage.getItem('select')
-        console.log(stone)
+        localStorage.setItem('cuotas', cuocompu);
+        localStorage.setItem('valor', valorcuota);
+
+        // con esto reemplazamos todo el texto - SUMANDO CANTIDAD Y MONTO DE CUOTAS y agregamos los legales 
+        let cuotas = localStorage.getItem('cuotas');
+        let valor = localStorage.getItem('valor')
 
         const compuCuotas = document.querySelector(".box-payment-group2.box-payment-option.custom202PaymentGroupPaymentGroup");
-        compuCuotas.textContent = "Usted a elegido abonar su compra con CompuMas en " + stone + " cuotas.";
+        compuCuotas.textContent = "Usted a elegido abonar su compra con CompuMas en " + cuotas + " de GS " + valor ;
 
         const div = document.createElement("div");
         div.textContent = "Su compra con crédito CompuMAS esta siendo procesada por el departamento Financiero. Nos podremos en contacto a la brevedad.";
@@ -76,4 +79,25 @@ $(window).on("load", function () {
         div.classList.add("legal");
     }
 });
+
+
+$(window).on("load", function () {
+
+        let cuotas = localStorage.getItem('cuotas');
+        let valor = localStorage.getItem('valor')
+
+        const compuCuotas = document.querySelector(".box-payment-group2.box-payment-option.custom202PaymentGroupPaymentGroup");
+        compuCuotas.textContent = "Usted a elegido abonar su compra con CompuMas en " + cuotas + " de GS " + valor ;
+
+        const div = document.createElement("div");
+        div.textContent = "Su compra con crédito CompuMAS esta siendo procesada por el departamento Financiero. Nos podremos en contacto a la brevedad.";
+
+        const compuCuotasInfo = document.querySelector(".box-payment-group2.box-payment-option.custom202PaymentGroupPaymentGroup");
+
+        compuCuotasInfo.insertAdjacentElement("beforeend", div);
+
+        div.classList.add("legal");
+
+}
+
 
