@@ -405,6 +405,9 @@ $("#soycompumas").on("submit", function (e) {
 
     var mensaje = "id: " + idcompu + " | celular: " + telcompu + " | n° cuotas: " + cuocompu + " | valor cuota: Gs." + valorcuota;
 
+    localStorage.setItem('cuotas', cuocompu);
+    localStorage.setItem('valor', valorcuota);
+
     console.log(mensaje);
 
     cargarMensaje(mensaje);
